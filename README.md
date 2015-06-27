@@ -15,8 +15,9 @@
  SimpleModbusSlave implements an unsigned int return value on a call to modbus_update().
  This value is the total error count since the slave started. It's useful for fault finding.
  
- This code is for a Modbus slave implementing functions 3 and 16
+ This code is for a Modbus slave implementing functions 3,6 and 16
  function 3: Reads the binary contents of holding registers (4X references)
+ function 6 : Preset single register
  function 16: Presets values into a sequence of holding registers (4X references)
  
  All the functions share the same register array.
