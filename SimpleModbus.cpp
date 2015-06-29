@@ -163,7 +163,7 @@ unsigned int modbus_update()
 				  -- Function 06H
 				   AA|FF|RLO|RHI|DLO|DHI|CRC
 				  */
-				  else if (!broadcastFlag && (function == 6))
+				  else if (function == 6)
 				  {
 					  if (startingAddress < holdingRegsSize) // check exception 2 ILLEGAL DATA ADDRESS
 					  {
