@@ -160,7 +160,7 @@ unsigned int modbus_update()
 						  exceptionResponse(2); // exception 2 ILLEGAL DATA ADDRESS
 				  }
 				  /* REVISI DIMULAI DARI SINI  FUNGSI 6 PRESET SINGLE REG
-				  -- Function 06H
+				  adding  Function 06H
 				   AA|FF|RLO|RHI|DLO|DHI|CRC
 				  */
 				  else if (function == 6)
@@ -178,7 +178,8 @@ unsigned int modbus_update()
 							  crc16 = calculateCRC(responseFrameSize - 2);
 							  frame[responseFrameSize - 2] = crc16 >> 8; // split crc into 2 bytes
 							  frame[responseFrameSize - 1] = crc16 & 0xFF;
-							  sendPacket(responseFrameSize);
+							  if (!broadcastFlag) // don't respond if it's a broadcast message
+							   sendPacket(responseFrameSize);
 					  }
 					  else
 					  exceptionResponse(2); // exception 2 ILLEGAL DATA ADDRESS
